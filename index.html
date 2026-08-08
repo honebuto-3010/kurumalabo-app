@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="theme-color" content="#003366">
+    <meta name="description" content="車の給油データ">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>車の健康診断ラボ</title>
+
+    <!-- 必要なCSSだけ残す -->
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/oil.css">
+    <link rel="stylesheet" href="css/graph.css">
+
+    <link rel="manifest" href="manifest.webmanifest">
+</head>
+<body>
+
+<header class="header">
+    <div class="header-bg">
+        <svg class="formula formula-h2o" viewBox="0 0 100 30" width="100" height="30">
+            <text x="5" y="20" fill="rgba(0, 51, 102, 0.18)" font-size="20">H₂O</text>
+        </svg>
+
+        <svg class="formula formula-co2" viewBox="0 0 100 30" width="100" height="30">
+            <text x="5" y="20" fill="rgba(0, 51, 102, 0.18)" font-size="20">CO₂</text>
+        </svg>
+
+        <svg class="formula formula-c6h12o6" viewBox="0 0 140 30" width="140" height="30">
+            <text x="5" y="20" fill="rgba(0, 51, 102, 0.18)" font-size="20">C₆H₁₂O₆</text>
+        </svg>
+    </div>
+
+    <!-- タイトル（左） -->
+    <div class="header-title">車の健康診断ラボ！</div>
+
+    <!-- ハンバーガーボタン（右） -->
+    <button class="menu-btn" id="menuBtn">☰</button>
+</header>
+
+<!-- スライドダウンメニュー（ヘッダーの外） -->
+<ul class="menu" id="menu">
+    <li><a href="#" onclick="loadView('home')">Home</a></li>
+    <li><a href="#" onclick="loadView('graph')">給油量グラフ</a></li>
+    <li><a href="#" onclick="loadView('oil')">ガソリン給油</a></li>
+</ul>
+
+
+<main class="main">
+
+
+    <div id="app"></div>
+</main>
+
+<!-- Service Worker -->
+<script>
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+            navigator.serviceWorker.register('service-worker.js')
+                .then(reg => console.log('Service Worker registered:', reg.scope))
+                .catch(err => console.error('Service Worker registration failed:', err));
+        });
+    }
+</script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<!-- 必要なJSだけ残す -->
+<script src="js/app.js" defer></script>
+<script src="js/oil.js" defer></script>
+<script src="js/graph.js" defer></script>
+
+<!-- ハンバーガーメニュー -->
+<script>
+const menuBtn = document.getElementById('menuBtn');
+const menu = document.getElementById('menu');
+
+menuBtn.addEventListener('click', () => {
+    menu.classList.toggle('open');
+});
+
+</script>
+
+</body>
+</html>

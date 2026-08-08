@@ -1,0 +1,128 @@
+@charset "utf-8";
+
+/* ===============================
+   グラフ（canvas）
+=============================== */
+canvas {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    padding: 10px;
+}
+
+/* ===============================
+   ページタイトル
+=============================== */
+.page-title {
+    margin-bottom: 20px;
+}
+
+.page-title h2 {
+    color: #003366;
+}
+
+/* ===============================
+   グラフページレイアウト
+=============================== */
+.graph-page {
+    width: 100%;
+    min-height: calc(100vh - 80px);
+    padding: 20px;
+    box-sizing: border-box;
+
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+/* グラフサイズ */
+#oilChart {
+    width: 100% !important;
+    height: 300px !important;
+}
+
+/* ===============================
+   ホームへ戻るボタン
+=============================== */
+.back-home-btn {
+    background: #003366;
+    color: white;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 6px;
+    font-size: 16px;
+    margin-bottom: 12px;
+    cursor: pointer;
+}
+.back-home-btn:hover {
+    background: #002244;
+}
+
+/* ===============================
+   金額カード（グラフ下の一覧）
+=============================== */
+.price-list {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* 統合されたラボ風カード + 色バー */
+.price-item {
+    position: relative;
+    padding: 16px 20px 16px 28px;
+
+    /* ラボ風グリッド背景 */
+    background:
+        linear-gradient(0deg, rgba(255,255,255,0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.08) 1px, transparent 1px);
+    background-size: 18px 18px;
+
+    backdrop-filter: blur(3px);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 14px;
+
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    color: #003366;
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+/* 左の色バー（燃料種別と連動） */
+.price-item::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 6px;
+    height: 100%;
+    border-radius: 6px 0 0 6px;
+    background-color: var(--bar-color);
+}
+
+/* ===============================
+   メニュー
+=============================== */
+.menu li a {
+    padding: 12px 16px;
+    display: block;
+}
+.price-item .delete-btn {
+    display: block;          /* 横並びを解除して縦に並べる */
+    width: 100%;             /* カード幅いっぱいにする */
+    margin-top: 12px;        /* 上に余白 */
+    padding: 10px 0;
+
+    background: #cc0000;     /* 赤系（レギュラーと統一） */
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.price-item .delete-btn:hover {
+    background: #aa0000;
+}

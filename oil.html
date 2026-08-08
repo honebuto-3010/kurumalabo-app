@@ -1,0 +1,46 @@
+<div class="oil-page">
+<div class="page-title">
+    <h2>給油記録</h2>
+    <p>燃費管理や走行データの分析に役立つ給油情報を記録します。</p>
+</div>
+
+<div class="oil-form">
+
+    <div class="form-item">
+        <label>給油日</label>
+        <input type="date" id="oil-date">
+    </div>
+
+    <div class="form-item">
+        <label>給油量（L）</label>
+        <input type="number" id="oil-liter" placeholder="例：35">
+    </div>
+    
+    <div class="form-item">
+        <label>燃料種別</label>
+        <select id="oil-type">
+        <option value="レギュラー">レギュラー</option>
+        <option value="ハイオク">ハイオク</option>
+        <option value="軽油">軽油</option>
+        </select>
+    </div>
+
+    <div class="form-item">
+        <label>金額（円）</label>
+        <input type="number" id="oil-price" placeholder="例：5200">
+    </div>
+
+    <div class="form-item">
+        <label>給油場所</label>
+        <input type="text" id="oil-place" autocomplete="on" placeholder="例：ENEOS （株）ミータス大林">
+    </div>
+
+    <button class="submit-btn">記録を保存する</button>
+</div>
+
+<div class="oil-list">
+    <h3>給油履歴一覧</h3>
+    <ul id="oil-history"></ul>
+</div>
+
+</div>
