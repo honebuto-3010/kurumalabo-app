@@ -7,11 +7,9 @@ const CACHE_NAME = "car-health-lab-v1";
 // キャッシュするファイル一覧
 // ===============================
 const urlsToCache = [
-  "/",
   "index.html",
   "manifest.webmanifest",
-
-  "offline.html",   // ← これが必須！
+  "offline.html",
 
   // Views
   "views/home.html",
@@ -68,12 +66,10 @@ self.addEventListener("activate", event => {
 self.addEventListener("fetch", event => {
   event.respondWith(
     caches.match(event.request).then(response => {
-      // キャッシュがあれば返す
       if (response) return response;
 
-      // ネットワークへ（失敗したら offline.html）
       return fetch(event.request).catch(() => {
-        return caches.match("/offline.html");
+        return caches.match("offline.html");
       });
     })
   );
