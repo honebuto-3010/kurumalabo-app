@@ -13,7 +13,7 @@ if ('serviceWorker' in navigator) {
 // SPAビュー切り替え
 // ===============================
 async function loadView(page) {
-    const html = await fetch(`/views/${page}.html`).then(res => res.text());
+    const html = await fetch(`views/${page}.html`).then(res => res.text());
 
     // ① HTMLを読み込む
     document.getElementById("app").innerHTML = html;
