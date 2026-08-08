@@ -7,12 +7,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>車の健康診断ラボ</title>
 
-    <!-- 必要なCSSだけ残す -->
+    <!-- CSS -->
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/oil.css">
     <link rel="stylesheet" href="css/graph.css">
 
+    <!-- PWA -->
     <link rel="manifest" href="manifest.webmanifest">
 </head>
 <body>
@@ -32,45 +33,37 @@
         </svg>
     </div>
 
-    <!-- タイトル（左） -->
     <div class="header-title">車の健康診断ラボ！</div>
-
-    <!-- ハンバーガーボタン（右） -->
     <button class="menu-btn" id="menuBtn">☰</button>
 </header>
 
-<!-- スライドダウンメニュー（ヘッダーの外） -->
 <ul class="menu" id="menu">
     <li><a href="#" onclick="loadView('home')">Home</a></li>
     <li><a href="#" onclick="loadView('graph')">給油量グラフ</a></li>
     <li><a href="#" onclick="loadView('oil')">ガソリン給油</a></li>
 </ul>
 
-
 <main class="main">
-
-
     <div id="app"></div>
 </main>
 
 <!-- Service Worker -->
 <script>
-    if ('serviceWorker' in navigator) {
-        window.addEventListener('load', () => {
-            navigator.serviceWorker.register('service-worker.js')
-                .then(reg => console.log('Service Worker registered:', reg.scope))
-                .catch(err => console.error('Service Worker registration failed:', err));
-        });
-    }
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./service-worker.js')
+            .then(reg => console.log('SW registered:', reg.scope))
+            .catch(err => console.error('SW registration failed:', err));
+    });
+}
 </script>
+
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-<!-- 必要なJSだけ残す -->
 <script src="app.js" defer></script>
 <script src="oil.js" defer></script>
 <script src="graph.js" defer></script>
 
-<!-- ハンバーガーメニュー -->
 <script>
 const menuBtn = document.getElementById('menuBtn');
 const menu = document.getElementById('menu');
@@ -78,8 +71,8 @@ const menu = document.getElementById('menu');
 menuBtn.addEventListener('click', () => {
     menu.classList.toggle('open');
 });
-
 </script>
 
 </body>
 </html>
+
