@@ -2,19 +2,21 @@
   "name": "車の健康診断ラボ",
   "short_name": "車の健康診断",
   "start_url": "./",
+  "scope": "./",
   "display": "standalone",
   "background_color": "#f5f7fa",
   "theme_color": "#003366",
   "icons": [
     {
-      "src": "icon/icon-192.png",
+      "src": "icons/icon-192.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "icon/icon-512.png",
+      "src": "icons/icon-512.png",
       "sizes": "512x512",
       "type": "image/png"
     }
   ]
 }
+
