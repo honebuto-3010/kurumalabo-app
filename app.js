@@ -13,17 +13,16 @@ if ('serviceWorker' in navigator) {
 // SPAビュー切り替え
 // ===============================
 async function loadView(page) {
-    const html = await fetch(`views/${page}.html`).then(res => res.text());
+    const html = await fetch(`${page}.html`).then(res => res.text());
 
-    // ① HTMLを読み込む
     document.getElementById("app").innerHTML = html;
 
-    // ② ページごとの初期化関数を呼ぶ
     if (page === "oil" && typeof initOil === "function") initOil();
     if (page === "graph" && typeof initGraph === "function") initGraph();
 }
 
 window.loadView = loadView;
+
 
 // ===============================
 // ホーム画面（カードUI）
