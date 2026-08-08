@@ -1,76 +1,51 @@
-// ===============================
-// キャッシュ名
-// ===============================
 const CACHE_NAME = "car-health-lab-v1";
 
-// ===============================
-// キャッシュするファイル一覧
-// ===============================
 const urlsToCache = [
   "index.html",
   "manifest.webmanifest",
   "offline.html",
 
-  // Views
-  "views/home.html",
-  "views/oil.html",
-  "views/graph.html",
+  // Views（フォルダなし）
+  "home.html",
+  "oil.html",
+  "graph.html",
 
   // CSS
-  "css/header.css",
-  "css/style.css",
-  "css/oil.css",
-  "css/graph.css",
+  "header.css",
+  "style.css",
+  "oil.css",
+  "graph.css",
 
   // JS
-  "js/app.js",
-  "js/oil.js",
-  "js/graph.js",
+  "app.js",
+  "oil.js",
+  "graph.js",
 
   // Icons
-  "icons/icon-192.png",
-  "icons/icon-512.png"
+  "icon-192.png",
+  "icon-512.png"
 ];
 
-// ===============================
-// インストール（初回読み込み時）
-// ===============================
 self.addEventListener("install", event => {
   event.waitUntil(
-    caches.open(CACHE_NAME).then(cache => {
-      return cache.addAll(urlsToCache);
-    })
+    caches.open(CACHE_NAME).then(cache => cache.addAll(urlsToCache))
   );
 });
 
-// ===============================
-// 有効化（古いキャッシュの削除）
-// ===============================
 self.addEventListener("activate", event => {
   event.waitUntil(
-    caches.keys().then(keys => {
-      return Promise.all(
-        keys.map(key => {
-          if (key !== CACHE_NAME) {
-            return caches.delete(key);
-          }
-        })
-      );
-    })
+    caches.keys().then(keys =>
+      Promise.all(keys.map(key => key !== CACHE_NAME && caches.delete(key)))
+    )
   );
 });
 
-// ===============================
-// fetch（オフライン対応）
-// ===============================
 self.addEventListener("fetch", event => {
   event.respondWith(
     caches.match(event.request).then(response => {
       if (response) return response;
-
-      return fetch(event.request).catch(() => {
-        return caches.match("offline.html");
-      });
+      return fetch(event.request).catch(() => caches.match("offline.html"));
     })
   );
 });
+
