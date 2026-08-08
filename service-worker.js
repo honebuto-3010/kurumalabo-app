@@ -8,30 +8,30 @@ const CACHE_NAME = "car-health-lab-v1";
 // ===============================
 const urlsToCache = [
   "/",
-  "/index.html",
-  "/manifest.webmanifest",
+  "index.html",
+  "manifest.webmanifest",
 
-  "/offline.html",   // ← これが必須！
+  "offline.html",   // ← これが必須！
 
   // Views
-  "/views/home.html",
-  "/views/oil.html",
-  "/views/graph.html",
+  "views/home.html",
+  "views/oil.html",
+  "views/graph.html",
 
   // CSS
-  "/css/header.css",
-  "/css/style.css",
-  "/css/oil.css",
-  "/css/graph.css",
+  "css/header.css",
+  "css/style.css",
+  "css/oil.css",
+  "css/graph.css",
 
   // JS
-  "/js/app.js",
-  "/js/oil.js",
-  "/js/graph.js",
+  "js/app.js",
+  "js/oil.js",
+  "js/graph.js",
 
   // Icons
-  "/icon/icon-192.png",
-  "/icon/icon-512.png"
+  "icons/icon-192.png",
+  "icons/icon-512.png"
 ];
 
 // ===============================
